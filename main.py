@@ -9,6 +9,10 @@ class Product(BaseModel):
     price: int
     onOffer: Union[bool, None] = None
 
+class ManditoryMode(BaseModel):
+    name: str
+    desc: str | None = None
+
 class Restrictions(str, Enum):
     ai = "AI"
     dataScience = "DataScience"
@@ -32,3 +36,7 @@ async def validate(restrict: Restrictions):
         return {"type":restrict}
     else:
         return {"error": "Condition not handled"}
+
+@app.get("/mainditory")
+async def handleManditor(manditory: ManditoryMode):
+    return manditory
