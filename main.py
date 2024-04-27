@@ -2,6 +2,8 @@ from typing import Union
 from pydantic import BaseModel
 from fastapi import FastAPI
 from enum import Enum
+from fastapi import Query
+from typing import Annotated
 
 class Product(BaseModel):
     productId: str
@@ -40,3 +42,7 @@ async def validate(restrict: Restrictions):
 @app.get("/mainditory")
 async def handleManditor(manditory: ManditoryMode):
     return manditory
+
+@app.get("/query")
+async def queryLogic(q: Annotated[str | None,Query(max_length=50)] = None,r: str| None = Query(max_length=50)):
+    return {"q":q,"r":r}
