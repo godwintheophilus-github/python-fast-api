@@ -50,5 +50,4 @@ This is a sample FastAPI project demonstrating how to build high-performance API
 
 3. Test the API endpoints using the provided documentation or tools like Postman or cURL.
 
-## Project Structure
 
